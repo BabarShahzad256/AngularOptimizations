@@ -1,0 +1,44 @@
+<!--Sidebar Page Container-->
+<div class="sidebar-page-container">
+  <div class="auto-container">
+    <div class="row clearfix">
+      <!--Content Side-->
+      <div class="content-side col-lg-8 col-md-8 col-sm-12 col-xs-12">
+        <div class="content">
+          <div class="blog-single">
+            <div class="inner-box">
+              <div class="upper-box">
+                <h2 *ngIf="showContent">{{selectedShow.name}}</h2>
+              </div>
+              <div class="text">
+                <div class="row clearfix">
+                  <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="image" *ngIf="showContent">
+                      <img *ngIf="selectedShow.image != null" class="image-round" width="100%" min-height="200px"
+                           [src]="selectedShow.image.medium" alt="Image preview"/>
+                      <img *ngIf="selectedShow.image == null" class="image-round" width="100%" min-height="200px"
+                           src="./assets/images/no-img.png" alt="Image preview"/>
+                    </div>
+                  </div>
+                  <div class="col-md-8 col-sm-8 col-xs-12">
+                    <p *ngIf="showContent" [innerHTML]="selectedShow.summary"></p>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Sidebar Side-->
+      <div class="sidebar-side col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+<!--End Sidebar Page Container-->

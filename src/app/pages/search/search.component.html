@@ -1,0 +1,53 @@
+<div class="sidebar-page-container">
+  <div class="auto-container">
+    <div class="row clearfix">
+
+      <div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="category-tabs-box">
+
+          <div class="prod-tabs tabs-box">
+
+            <div class="tab-btns tab-buttons clearfix">
+              <div class="pull-left">
+                <div class="category">Show Results For</div>
+                {{searchQuery.search}}
+              </div>
+            </div>
+            <div class="tabs-content">
+              <div class="tab active-tab" id="prod-alls">
+                <div class="content">
+                  <div class="row clearfix">
+
+                    <div class="column col-md-2 col-sm-6 col-xs-12 margin-botm"
+                         *ngFor="let item of searchShows | paginate: { itemsPerPage: 12, currentPage: paging }">
+
+                      <div class="image-container"
+                           [routerLink]="['/show-detail', item.show.id]">
+                        <img *ngIf="item.show.image != null" class="image-round" width="100%" min-height="200px"
+                             [src]="item.show.image.medium" alt="Image preview"/>
+                        <img *ngIf="item.show.image == null" class="image-round" width="100%" min-height="200px"
+                             src="./assets/images/no-img.png" alt="Image preview"/>
+
+                        <div class="margintop">
+                          <div class="col-lg-12 col-sm-12 text-center"><a class="text-color">{{item.show.name}}</a></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-sm-12 text-center">
+                <pagination-controls (pageChange)="paging = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>

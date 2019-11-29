@@ -1,0 +1,74 @@
+<div class="sidebar-page-container">
+  <div class="auto-container">
+    <div class="row clearfix">
+
+      <div class="content-side col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+        <div class="category-tabs-box">
+
+          <div class="prod-tabs tabs-box">
+
+            <div class="tab-btns tab-buttons clearfix">
+              <div class="pull-left">
+                <div class="category">All Shows</div>
+              </div>
+            </div>
+            <div *ngIf="allShows">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="input-group margin-botm">
+                    <label> Fast Search without api call</label>
+                    <input id="mysearch" type="search" class="form-control text-center" [(ngModel)]="searchtext" (keyup)="search(searchtext)">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="input-group margin-botm">
+                    <label> Search with api call</label>
+                      <form (ngSubmit)="searchShow(f.value)" #f="ngForm">
+                        <div class="col-lg-8">
+                          <input class="form-control text-center" ngModel type="text" placeholder="Search.." name="search">
+                        </div>
+                        <div class="col-lg-4">
+                          <button class="btn btn-primary" type="submit">Search</button>
+                        </div>
+                      </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tabs-content">
+              <div class="tab active-tab" id="prod-alls">
+                <div class="content">
+                  <div class="row clearfix">
+                    <div class="column col-md-2 col-sm-6 col-xs-12 paggin"  *ngFor="let item of allShows | paginate: { itemsPerPage: 18, currentPage: paging }">
+
+                      <div class="image-container" [routerLink]="['/show-detail', item.id]">
+                        <img *ngIf="item.image != null" class="image-round" width="100%" min-height="200px"
+                             [src]="item.image.medium" alt="Image preview"/>
+                        <img *ngIf="item.image == null" class="image-round" width="100%" min-height="200px"
+                             src="./assets/images/no-img.png" alt="Image preview"/>
+                        <div class="margintop">
+                          <div class="col-lg-12 col-sm-12 text-center"><a class="white">{{item.name}}</a></div>
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-sm-12 text-center">
+                <pagination-controls (pageChange)="paging = $event"></pagination-controls>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+
